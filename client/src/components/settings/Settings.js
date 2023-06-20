@@ -8,7 +8,7 @@ import { logout } from "../../actions/authAction";
 import callAxios from "../../utils/callAxios";
 
 const Settings = props => {
-  const { isAuthenticated, loadUser, user, logout, authLoading } = props;
+  const { isAuthenticated, loadUser,  logout, authLoading } = props;
   useEffect(() => {
     loadUser();
   }, []);

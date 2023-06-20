@@ -8,7 +8,7 @@ import { MdCancel } from "react-icons/md";
 import { TiCancel } from "react-icons/ti";
 
 const AddSalesModal = (props) => {
-  const { showSalesModal, toggleSalesModal, addSale } = props;
+  const {  toggleSalesModal, addSale } = props;
 
   const modalContent = useRef(null);
 
@@ -208,7 +208,6 @@ const AddSalesModal = (props) => {
                     alignItems: "center",
                     justifyContent: "center",
                     flexDirection: "column",
-                    width: "100%",
                     backgroundColor: "#454343",
                     color: "#fff",
                     borderRadius: "5px",
