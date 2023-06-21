@@ -26,6 +26,7 @@ var corsOptions = {
     "POST",
     "PUT",
     "PATCH",
+    "DELETE",
   ]
 }
 app.use(cors(corsOptions));
