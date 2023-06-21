@@ -19,15 +19,15 @@ app.use(express.json({ extended: false }));
 app.use(express.urlencoded({ extended: false }));
 var corsOptions = {
   origin: process.env.CLIENT_URL,
-  credentials: true,
-  exposedHeaders: "*",
-  methods:[
-    "GET", 
-    "POST",
-    "PUT",
-    "PATCH",
-    "DELETE",
-  ]
+  // credentials: true,
+  // exposedHeaders: "*",
+  // methods:[
+  //   "GET", 
+  //   "POST",
+  //   "PUT",
+  //   "PATCH",
+  //   "DELETE",
+  // ]
 }
 app.use(cors(corsOptions));
 
