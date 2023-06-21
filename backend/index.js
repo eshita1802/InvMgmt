@@ -20,7 +20,13 @@ app.use(express.urlencoded({ extended: false }));
 var corsOptions = {
   origin: process.env.CLIENT_URL,
   credentials: true,
-  exposedHeeaders: "*",
+  exposedHeaders: "*",
+  methods:[
+    "GET", 
+    "POST",
+    "PUT",
+    "PATCH",
+  ]
 }
 app.use(cors(corsOptions));
 
