@@ -17,7 +17,12 @@ connectDb();
 app.use(logger);
 app.use(express.json({ extended: false }));
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
+var corsOptions = {
+  origin: process.env.CLIENT_URL,
+  credentials: true,
+  exposedHeeaders: "*",
+}
+app.use(cors(corsOptions));
 
 // Badass welcome message 😈
 // app.get("/", (req, res) => {
