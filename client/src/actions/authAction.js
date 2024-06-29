@@ -52,21 +52,23 @@ export const login = data => async dispatch => {
       }
     });
   } catch (err) {
+    const errorResponse = err.response ? err.response : {};
+    const status = errorResponse.status;
+    
     dispatch({
       type: LOGIN_FAIL,
-      payload: err.response.status,
-      alert:
-        err.response.status === 400
-          ? {
-            msg: "Incorrect username or password",
-            type: "failure",
-            id
-          }
-          : {
-            msg: "Something went wrong. please refresh the page.",
-            type: "failure",
-            id
-          }
+      payload: status ? status : 'Unknown Error',
+      alert: status === 400
+        ? {
+          msg: "Incorrect username or password",
+          type: "failure",
+          id
+        }
+        : {
+          msg: "Something went wrong. please refresh the page.",
+          type: "failure",
+          id
+        }
     });
   } finally {
     setTimeout(() => {
@@ -76,6 +78,7 @@ export const login = data => async dispatch => {
       });
     }, 3000);
   }
+  
 };
 
 export const register = (data) => async dispatch => {
@@ -93,21 +96,24 @@ export const register = (data) => async dispatch => {
       }
     });
   } catch (err) {
+    const errorResponse = err.response || {};
+    const status = errorResponse.status || null;
+    const data = errorResponse.data || {};
+  
     dispatch({
       type: REGISTER_FAIL,
-      payload: err.response,
-      alert:
-      err.response.status === 400
-      ? {
-        msg: err.response.data.msg,
-        type: "failure",
-        id
-      }
-      : {
-        msg: "Something went wrong. please refresh the page.",
-        type: "failure",
-        id
-      }
+      payload: errorResponse,
+      alert: status === 400
+        ? {
+          msg: data.msg || "Incorrect data provided",
+          type: "failure",
+          id
+        }
+        : {
+          msg: "Something went wrong. please refresh the page.",
+          type: "failure",
+          id
+        }
     });
   } finally {
     setTimeout(() => {
@@ -117,8 +123,7 @@ export const register = (data) => async dispatch => {
       });
     }, 3000);
   }
-}
-
+}  
 export const setRegisterLoginLoading = () => {
   return {
     type: SET_REGISTER_LOGIN_LOADING

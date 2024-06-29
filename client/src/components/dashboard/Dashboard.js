@@ -52,6 +52,7 @@ const Dashboard = (props) => {
     getProducts();
     getSuppliers();
     getCustomers();
+
   }, []);
   const [allProducts, setAllProducts] = useState(null);
 
@@ -59,6 +60,7 @@ const Dashboard = (props) => {
     const getAllProducts = async () => {
       const res = await callAxios("GET", "/products");
       setAllProducts(res.data.products);
+      console.log(res.data.products);
     };
     getAllProducts();
   }, []);

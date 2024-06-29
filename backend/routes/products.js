@@ -30,7 +30,7 @@ router.post(
     [
       check("name")
         .not()
-        .isEmpty(),
+        .isEmpty(),//means not Empty
       // check("costPrice")
       //   .not()
       //   .isEmpty(),
